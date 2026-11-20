@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your tasks</title>
+    <style>
+        :root { color-scheme: light dark; }
+        body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.6; }
+        .flash { padding: .75rem 1rem; border-radius: .5rem; background: #dcfce7; color: #14532d; margin-bottom: 1rem; }
+        .warning { padding: .75rem 1rem; border-radius: .5rem; background: #fef9c3; color: #713f12; margin-bottom: 1rem; }
+        .error { color: #b91c1c; font-size: .9rem; }
+        ul.tasks { list-style: none; padding: 0; }
+        ul.tasks li { border: 1px solid #d4d4d8; border-radius: .5rem; padding: .75rem 1rem; margin-bottom: .5rem; }
+        label { display: block; margin-top: 1rem; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: .5rem; margin-top: .25rem; }
+        button { margin-top: 1rem; padding: .5rem 1rem; cursor: pointer; }
+        .overdue { color: #b91c1c; font-weight: 600; }
+    </style>
+</head>
+<body>
+    
+    
+    <h1>Your tasks</h1>
+
+    <p><a href="http://taskly.test/tasks/create">New task</a></p>
+
+    <form method="GET" action="http://taskly.test/tasks">
+        <label for="search">Search</label>
+        <input id="search" name="search" type="search" value="">
+
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+            <option value="">Any priority</option>
+                            <option value="low" >
+                    Low
+                </option>
+                            <option value="medium" >
+                    Medium
+                </option>
+                            <option value="high" >
+                    High
+                </option>
+                    </select>
+
+        <button type="submit">Filter</button>
+    </form>
+
+                        <p>Nothing to do. Enjoy it while it lasts.</p>
+            
+    <form method="POST" action="http://taskly.test/logout">
+        <input type="hidden" name="_token" value="[CSRF]" autocomplete="off">        <button type="submit">Sign out</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/pestphp/pest-plugin-phpstan/extension.neon
+
+parameters:
+    paths:
+        - app
+        - tests
+
+    level: 5
+
+    ignoreErrors:
+        # Three places where static analysis cannot see a method that genuinely
+        # exists, because the API is built at runtime. Each is scoped to one path
+        # so it can never hide a real error elsewhere.
+
+        # The evals plugin adds ->prompt() to Expectation at runtime; no stub exists.
+        -
+            identifier: method.notFound
+            path: tests/Evals/TaskTriageAgentTest.php
+
+        # Mockery's fluent API returns union types PHPStan cannot narrow.
+        -
+            identifier: method.notFound
+            path: tests/Feature/MockingTest.php
+
+        # TestResponse proxies getSession() through __call.
+        -
+            identifier: method.notFound
+            path: tests/Feature/SnapshotTest.php

@@ -1,0 +1,8 @@
+{
+    "title": [
+        "A task title needs at least 3 characters."
+    ],
+    "priority": [
+        "The priority field is required."
+    ]
+}
